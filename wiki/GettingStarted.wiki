@@ -3,8 +3,8 @@
 
 = Installation instructions =
 
-  *Download the source svn checkout http://django-ids.googlecode.com/svn/trunk/ django-ids-read-only
-  *Run python setup.py install
+  * Download the source svn checkout http://django-ids.googlecode.com/svn/trunk/ django-ids-read-only
+  * Run python setup.py install
 
 = Configuration =
 
