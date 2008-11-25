@@ -11,9 +11,7 @@ class HeaderData(models.Model):
 	content_length = models.IntegerField(blank=True, null=True)
 	request_encoding = models.CharField(blank=False, max_length=100)
 	content_type =  models.CharField(blank=False, max_length=250)
-	
-	class Admin:
-		pass
+
 	def __str__(self):
 		return self.remote_adress
 
@@ -21,9 +19,7 @@ class AttackTag(models.Model):
 	"""Model for tag to be applied to an attack"""
 	
 	label = models.CharField(blank=False, max_length=100)
-	
-	class Admin:
-		pass
+
 	def __str__(self):
 		return self.label
 
@@ -95,13 +91,6 @@ class IdsRecord(models.Model):
 			taglist = taglist + tag.label
 			taglist = taglist + " "
 		return taglist
-	
-
-	class Admin:
-		list_display = ('eventTimestamp','description','impact','tag_list','header_data')
-		
-		search_fields = ('description','header_data__remote_adress')
-		list_filter = ['eventTimestamp','description','tags','impact']
 
 	def __str__(self):
 		return "IdsRecord"#" %s : %s" % [self.eventTimestamp,self.description]
