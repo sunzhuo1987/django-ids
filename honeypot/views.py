@@ -7,10 +7,10 @@ def index(request):
     if request.method == 'POST': 
         form = TestForm(request.POST) 
         if form.is_valid(): 
-            return render_to_response('index.html', {'form': form,})
+            return render_to_response('ids/honeypot/index.html', {'form': form,})
     else:
         form = TestForm()
 
-    return render_to_response('index.html', {'form': form,})
+    return render_to_response('ids/honeypot/index.html', {'form': form,})
 
     

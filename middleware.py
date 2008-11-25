@@ -1,6 +1,6 @@
 import logging
 import re
-from djangoids.core import ids, settings, models
+from core import ids, settings, models
 
 class IdsMiddleware(object):
 	"""Middleware for ids actions"""
@@ -9,11 +9,14 @@ class IdsMiddleware(object):
 		self.rules = ids.RuleLoader(settings.RULES_LOCATION).loadRules()
 		logging.debug(len(self.rules))
 		self.centrifuge = ids.Centrifuge()
+		print("IDS WATCHING FOR BAD THINGS TO HAPPEN...")
 	
 	def	process_request(self, request):
 		""" basic method to analize the request"""
+		print("ids start checking")
 		fields = request.REQUEST.items()
 		for field in fields:
+                        print("Checking " + field[1] + " " + str(self.centrifuge.doCentrifuge(field[1])) )
 			if self.centrifuge.doCentrifuge(field[1]):
 				self.applyRules(field, request)
 

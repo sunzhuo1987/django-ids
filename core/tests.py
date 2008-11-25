@@ -1,5 +1,5 @@
 import unittest
-from djangoids.core import ids, settings
+from core import ids, settings
 
 
 class IdsTestCase(unittest.TestCase):
@@ -8,5 +8,10 @@ class IdsTestCase(unittest.TestCase):
 		"""docstring for testRuleLoader"""
 		loader = ids.RuleLoader(settings.RULES_LOCATION)
 		rules = loader.loadRules()
-		self.assertEquals(len(rules),68)
+		self.assertEquals(len(rules),67)
+
+	def testCentrifuge(self):
+                centrifuge = ids.Centrifuge()
+                self.assertEquals(centrifuge.doCentrifuge('SR'),False)
+                self.assertEquals(centrifuge.doCentrifuge('">XXXXXXXX'),True)
 	

@@ -73,6 +73,7 @@ class Centrifuge(object):
 		if len(stringToProbe) > 5:
 		    #Check for the attack char ratio 
 			result = self.preg_replace('/[\w\s\p{L}.,\/]*/ms', '', stringToProbe)
+			print("Stripped result. " +result)
 			stripped_length = len(result)
 			overall_length  = len(self.preg_replace('/\w{3,}/', '123', self.preg_replace('/\s{2,}/ms', '', stringToProbe))) 
 			if stripped_length != 0 and overall_length/stripped_length <= 3.5:
