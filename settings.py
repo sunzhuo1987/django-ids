@@ -61,6 +61,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'ids.middleware.IdsMiddleware',
 )
 
 ROOT_URLCONF = 'ids.urls'
@@ -69,6 +70,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    'C:/WORK/libs/dids/ids/templates'
 )
 
 INSTALLED_APPS = (
@@ -78,4 +80,5 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'ids.core',
+    'ids.honeypot',
 )
