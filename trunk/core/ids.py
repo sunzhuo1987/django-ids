@@ -50,7 +50,7 @@ class RuleLoader(object):
 	def __init__(self, filename):
 		super(RuleLoader, self).__init__()
 		self.filename = filename
-		print(self.filename)
+		logging.debug("Loading from " +self.filename)
 	
 	def loadRules(self):
 		"""return the list of IdsRules in the rules file"""
@@ -73,7 +73,7 @@ class Centrifuge(object):
 		if len(stringToProbe) > 5:
 		    #Check for the attack char ratio 
 			result = self.preg_replace('/[\w\s\p{L}.,\/]*/ms', '', stringToProbe)
-			print("Stripped result. " +result)
+			logging.debug("Stripped result " +result)
 			stripped_length = len(result)
 			overall_length  = len(self.preg_replace('/\w{3,}/', '123', self.preg_replace('/\s{2,}/ms', '', stringToProbe))) 
 			if stripped_length != 0 and overall_length/stripped_length <= 3.5:

@@ -9,14 +9,14 @@ class IdsMiddleware(object):
 		self.rules = ids.RuleLoader(settings.RULES_LOCATION).loadRules()
 		logging.debug(len(self.rules))
 		self.centrifuge = ids.Centrifuge()
-		print("IDS WATCHING FOR BAD THINGS TO HAPPEN...")
+		logging.debug("IDS WATCHING FOR BAD THINGS TO HAPPEN...")
 	
 	def	process_request(self, request):
 		""" basic method to analize the request"""
-		print("ids start checking")
+		logging.debug("ids start checking")
 		fields = request.REQUEST.items()
 		for field in fields:
-                        print("Checking " + field[1] + " " + str(self.centrifuge.doCentrifuge(field[1])) )
+                        logging.debug("Checking " + field[1] + " " + str(self.centrifuge.doCentrifuge(field[1])) )
 			if self.centrifuge.doCentrifuge(field[1]):
 				self.applyRules(field, request)
 
@@ -27,7 +27,7 @@ class IdsMiddleware(object):
 																	request_method = request.META["REQUEST_METHOD"],
 																	content_length = request.META["CONTENT_LENGTH"])
     
-		logging.warn("ALLARM! %s contains %s " % (field[0],rule.description ))
+		logging.warn("%s contains %s " % (field[0],rule.description ))
 		record = models.IdsRecord()
 		record.description = rule.description
 		record.user = request.user
@@ -53,6 +53,7 @@ class IdsMiddleware(object):
 				if result :
 					self.doCounterStrike(request, field, rule)
 			except Exception, e:
+                                print("error in urle" + rule.id)
 				logging.error(e) #death trap due lookbehind
 				
 			
