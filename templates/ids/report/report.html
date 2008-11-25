@@ -32,7 +32,13 @@
 	<img src="http://django-ids.googlecode.com/files/django_ids.png" alt="DjangoIds"  border="0"/>
 </a>
 <div id="nonstampabile">
+	
 	<a href="#" onclick="window.print()" >Print</a>
+<form action="/django_ids/report/" method="POST">
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+	
 </div>
 	
 	<div id="report">

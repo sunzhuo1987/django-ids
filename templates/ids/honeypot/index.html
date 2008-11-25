@@ -1,12 +1,41 @@
-
-
 <html>
-	<body>
+<head>
+	<style type="text/css" media="screen">
+		body { background-color: #fff; color: #333; }
+
+	body, p, ol, ul, td {
+  	font-family: verdana, arial, helvetica, sans-serif;
+  	font-size:   13px;
+  	line-height: 18px;
+	}
+	
+	
+	
+	
+	#nonstampabile {display:block ; float:right}
+		
+	</style>
+	<style type="text/css" media="print">
+				body { background-color: #fff; color: #333; }
+
+	body, p, ol, ul, td {
+  	font-family: verdana, arial, helvetica, sans-serif;
+  	font-size:   13px;
+  	line-height: 18px;
+	}
+		#nonstampabile {display:none}
+	</style>
+</head>
+<body>
+<div id="container">
+<a href="http://code.google.com/p/django-ids/">	
+	<img src="http://django-ids.googlecode.com/files/django_ids.png" alt="DjangoIds"  border="0"/>
+</a>
 		<form action="/honeypot/" method="POST">
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>
 
 		
-	</bopy>
+	</body>
 </html>
