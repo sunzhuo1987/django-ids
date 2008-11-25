@@ -1,0 +1,53 @@
+<html>
+<head>
+	<style type="text/css" media="screen">
+		body { background-color: #fff; color: #333; }
+
+	body, p, ol, ul, td {
+  	font-family: verdana, arial, helvetica, sans-serif;
+  	font-size:   13px;
+  	line-height: 18px;
+	}
+	
+	
+	
+	
+	#nonstampabile {display:block ; float:right}
+		
+	</style>
+	<style type="text/css" media="print">
+				body { background-color: #fff; color: #333; }
+
+	body, p, ol, ul, td {
+  	font-family: verdana, arial, helvetica, sans-serif;
+  	font-size:   13px;
+  	line-height: 18px;
+	}
+		#nonstampabile {display:none}
+	</style>
+</head>
+<body>
+<div id="container">
+<a href="http://code.google.com/p/django-ids/">	
+	<img src="http://django-ids.googlecode.com/files/django_ids.png" alt="DjangoIds"  border="0"/>
+</a>
+<div id="nonstampabile">
+	<a href="#" onclick="window.print()" >Print</a>
+</div>
+	
+	<div id="report">
+		
+		<h2>ATTACK REPORT FROM {{date1}} TO {{date2}}</h2>
+		
+		<div id="attackDistribution">
+			
+			
+		</div>
+	
+	</div>	
+	
+</div>
+</body>
+
+
+</html>
