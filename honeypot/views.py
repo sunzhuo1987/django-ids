@@ -8,6 +8,8 @@ def index(request):
         form = TestForm(request.POST) 
         if form.is_valid(): 
             return render_to_response('ids/honeypot/index.html', {'form': form,})
+		else:
+			return render_to_response('ids/honeypot/index.html', {'form': form, 'error',True})
     else:
         form = TestForm()
 
