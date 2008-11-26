@@ -43,9 +43,19 @@
 	
 	<div id="report">
 		
-		<h2>ATTACK REPORT FROM {{date1}} TO {{date2}}</h2>
+		<h1>ATTACK REPORT</h1><h2> FROM {{date1}} TO {{date2}}</h2>
 		
 		<div id="attackDistribution">
+			<h2>Attacks ditributio </h2>
+			<table border="0" cellspacing="5" cellpadding="5">
+				<tr><th>Number of attacks</th><th>Description</th></tr>
+				{% for top_attack in top_attacks %}
+						<tr><td>{{top_attack.value}}</td>
+							<td>{{top_attack.label}}</td></tr>
+				{% endfor %}
+
+			</table>
+			<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:{% for top_attack in top_attacks %}{{top_attack.value}}.0,{% endfor %}0.0&chs=640x280&chl={% for top_attack in top_attacks %}{{top_attack.label}}|{% endfor %}">
 			
 			
 		</div>
