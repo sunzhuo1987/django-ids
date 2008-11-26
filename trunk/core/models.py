@@ -45,9 +45,10 @@ class IdsRecordManager(models.Manager):
 		return [ReportRow(item[0],item[1]) for item in cursor.fetchall()]
 	
 	def top_attacks_tag(self):
-		query = """SELECT count(*) AS num_attacks, core_idsrecord.description AS description 
-						FROM core_idsrecord 
-						GROUP BY core_idsrecord.description order by num_attacks"""
+		query = """SELECT count(*) AS num_attacks, core_attacktag.label AS description 
+						FROM core_idsrecord_tags,core_idsrecord,core_attacktag
+						WHERE core_idsrecord_tags.idsrecord_id = core_idsrecord.id AND core_idsrecord_tags.attacktag_id = core_attacktag.id
+						GROUP BY core_attacktag.label order by num_attacks"""
 		cursor = connection.cursor()
 		cursor.execute(query,)
 		return [ReportRow(item[0],item[1]) for item in cursor.fetchall()]
@@ -61,7 +62,7 @@ class IdsRecordManager(models.Manager):
 		return [ReportRow(item[0],item[1]) for item in cursor.fetchall()]
 	
 	def attacks_trends(self):
-		query = """SELECT count(*) AS num_attacks, core_idsrecord.eventTimestamp AS report_date 
+		query = """SELECT count(*) AS num_attacks, date(core_idsrecord.eventTimestamp) AS report_date 
 						FROM core_idsrecord 
 						GROUP BY report_date order by report_date"""
 		cursor = connection.cursor()
