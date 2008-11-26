@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # Example:
     # (r'^ids/', include('ids.foo.urls')),
     (r'^honeypot/','ids.honeypot.views.index'),
+    (r'^report/','ids.core.views.report'),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:

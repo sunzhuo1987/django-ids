@@ -27,35 +27,99 @@
 	</style>
 </head>
 <body>
-<div id="container">
-<a href="http://code.google.com/p/django-ids/">	
-	<img src="http://django-ids.googlecode.com/files/django_ids.png" alt="DjangoIds"  border="0"/>
+	
+	<div id="header" style="border-bottom:1px solid;">
+		<a href="http://code.google.com/p/django-ids/" style="text-decoration:none">	
+	
+	<h1 style="font-size:450%;">
+	<span style="color:#092E20">DJANGO</span><span style="color:#FFE761; background:#092E20">IDS</span>
+</h1>
 </a>
+	</div>
+<div id="container">
+	
+
 <div id="nonstampabile">
 	
 	<a href="#" onclick="window.print()" >Print</a>
+	<!--
 <form action="/django_ids/report/" method="POST">
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>
-	
+	-->
 </div>
 	
-	<div id="report">
+	<div id="report"  style="border-bottom:1px solid;">
 		
-		<h1>ATTACK REPORT</h1><h2> FROM {{date1}} TO {{date2}}</h2>
-		
+		<h1>ATTACK REPORT</h1>
+		<!--
+		<h2> FROM {{date1}} TO {{date2}}</h2>
+		-->
 		<div id="attackDistribution">
-			<h2>Attacks ditributio </h2>
+			<h2>Attacks ditribution </h2>
 			<table border="0" cellspacing="5" cellpadding="5">
-				<tr><th>Number of attacks</th><th>Description</th></tr>
+				<tr><th></th><th>Number of attacks</th><th>Description</th></tr>
 				{% for top_attack in top_attacks %}
-						<tr><td>{{top_attack.value}}</td>
+						<tr>
+							<td>{{forloop.counter}}</td>
+							<td>{{top_attack.value}}</td>
 							<td>{{top_attack.label}}</td></tr>
 				{% endfor %}
 
 			</table>
-			<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:{% for top_attack in top_attacks %}{{top_attack.value}}.0,{% endfor %}0.0&chs=640x280&chl={% for top_attack in top_attacks %}{{top_attack.label}}|{% endfor %}">
+			<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:{% for top_attack in top_attacks %}{{top_attack.value}}.0,{% endfor %}0.0&chs=640x280&chl={% for top_attack in top_attacks %}{{forloop.counter}}|{% endfor %}">
+			
+			
+		</div>
+		
+		<div id="attackDistributionbytag"  style="border-bottom:1px solid;">
+			<h2>Attacks ditribution By Tag</h2>
+			<table border="0" cellspacing="5" cellpadding="5">
+				<tr><th></th><th>Number of attacks</th><th>Tag</th></tr>
+				{% for top_attack in top_attacks_by_tag %}
+						<tr>
+							<td>{{forloop.counter}}</td>
+							<td>{{top_attack.value}}</td>
+							<td>{{top_attack.label}}</td></tr>
+				{% endfor %}
+
+			</table>
+			<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:{% for top_attack in top_attacks_by_tag %}{{top_attack.value}}.0,{% endfor %}0.0&chs=640x280&chl={% for top_attack in top_attacks_by_tag %}{{forloop.counter}}|{% endfor %}">
+			
+			
+		</div>
+		
+				<div id="attackDistributionbypth"  style="border-bottom:1px solid;">
+			<h2>Attacks ditribution By Path</h2>
+			<table border="0" cellspacing="5" cellpadding="5">
+				<tr><th></th><th>Number of attacks</th><th>Path</th></tr>
+				{% for top_attack in top_attacks_paths %}
+						<tr>
+							<td>{{forloop.counter}}</td>
+							<td>{{top_attack.value}}</td>
+							<td>{{top_attack.label}}</td></tr>
+				{% endfor %}
+
+			</table>
+			<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:{% for top_attack in top_attacks_paths %}{{top_attack.value}}.0,{% endfor %}0.0&chs=640x280&chl={% for top_attack in top_attacks_paths %}{{forloop.counter}}|{% endfor %}">
+			
+			
+		</div>
+		
+		<div id="attacktrend">
+			<h2>Attacks trend</h2>
+			<table border="0" cellspacing="5" cellpadding="5">
+				<tr><th></th><th>Number of attacks</th><th>Date</th></tr>
+				{% for top_attack in attacks_trends %}
+						<tr>
+							<td>{{forloop.counter}}</td>
+							<td>{{top_attack.value}}</td>
+							<td>{{top_attack.label}}</td></tr>
+				{% endfor %}
+
+			</table>
+			<img src="http://chart.apis.google.com/chart?cht=lc&chd=t:{% for top_attack in attacks_trends %}{{top_attack.value}}.0,{% endfor %}0.0&chs=640x280&chl={% for top_attack in attacks_trends %}{{forloop.counter}}|{% endfor %}">
 			
 			
 		</div>
