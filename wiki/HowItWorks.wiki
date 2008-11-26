@@ -1,13 +1,11 @@
 #summary How Django IDS Works and performace evaluetions
+#labels Featured
 
 = Introduction =
 
-Add your content here.
+This is a brief explanation of how Django ids works and why you should'nt worry about performance
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Django IDS is basicaly a Middleware that checks every field of requests passed to the application. Values are checked vs a rules written as regular expressions that match if a field contains a possible attack string. This could sound quite time consuming but fields are passed to the rules engine only if they pass through the so called "centrifuge". This is a simple algorithm that checks the ratio between the string lenght and the number of special characters in it. If the ratio is high this is probabli an attack and so it is passed to the rules engine.
