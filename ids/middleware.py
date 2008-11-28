@@ -43,6 +43,9 @@ class IdsMiddleware(object):
 			persistentTag, is_new = models.AttackTag.objects.get_or_create(label = tag)
 			record.tags.add(persistentTag)
 		record.save()
+		
+		settings.contermesure.execute(request)
+		
 
 	def applyRules(self, field, request):
 		for rule in self.rules:
