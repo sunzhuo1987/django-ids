@@ -15,7 +15,7 @@ Django IDS is basicaly a Middleware that checks every field of requests passed t
 False positives are matching rule that shouldn't. If your django app has a comment system and someone leave something like this
 
 {{{
-you are a <b>*#!'!</b>
+you are a <b>*#!'!'</b>
 }}}
 
 Django IDS will catch it as an attack, which, technicaly, is wrong.
