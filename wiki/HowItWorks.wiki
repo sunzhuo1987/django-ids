@@ -12,4 +12,13 @@ Django IDS is basicaly a Middleware that checks every field of requests passed t
 
 = Contermesures and False positives =
 
-False positives are matching rule that shouldn't. If your django app has a comment system and some
+False positives are matching rule that shouldn't. If your django app has a comment system and someone leave something like this
+
+{{{
+you are a <b>*#!'!</b>
+}}}
+
+Django IDS will catch it as an attack, which, technicaly, is wrong.
+
+Contermesures to attacks could stop the request raising an http error or proceed with the request.
+The attack data is alaways recorded. Is up to the developer deciding what is the desired behaviour
