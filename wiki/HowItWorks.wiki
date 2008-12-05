@@ -1,5 +1,5 @@
 #summary How Django IDS Works and performace evaluetions
-#labels Featured
+#labels Featured,Phase-Design,Phase-QA
 
 = Introduction =
 
