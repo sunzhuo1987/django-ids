@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core import models
+import models
 
 class IdsRecordAdmin(admin.ModelAdmin):
         list_display = ('eventTimestamp','description','impact','tag_list','header_data')
