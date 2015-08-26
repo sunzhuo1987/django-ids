@@ -1,0 +1,1 @@
+Django-IDS is a Web Application Firewall that can be installled in Django projects as a pluggable appication

@@ -1,0 +1,1 @@
+Mario Heiderich http://mario.heideri.ch/ and the PHP IDS for original idea and rules development
